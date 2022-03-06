@@ -1,18 +1,20 @@
 // import ReactJson from "react-json-view";
 import dynamic from "next/dynamic";
-import { profileCard, rawDataContainer, reportContainer } from "../styles/Report.styles";
+import { profileCard, rawDataContainer, reportContainer, imageLogo } from "../styles/Report.styles";
 import { DetailsCard } from "./DetailsCard";
 import twitterLogo from "../../src/Twitter-social.png";
+import Image from "next/image";
 const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false });
 
 
 export function Report({ data }) {
   
   console.log('data', data);
-  
+  console.log(twitterLogo);
   if(!data) { 
     return <div className="mt-4 text-purple-600">
-      No Report Loaded
+       <Image src={twitterLogo} alt='twitter logo' className={imageLogo} />
+         { } No Report Loaded
       </div>
   }
   return (

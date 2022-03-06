@@ -8,3 +8,5 @@ export const rawDataContainer
  = `flex flex-wrap border mt-6 bg-gray-100`;
 
 export const reportListItem = "p-4 bg-purple-400 drop-shadow-lg rounded mb-4 w-1/3 text-white";
+
+export const imageLogo = "mr-5";
