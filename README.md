@@ -49,6 +49,8 @@
 
 Twitter Activity Tracker App enables anyone to check on a particular Twitter account activity, like most frequently used hashtags of a particular account, top mentions, all mentions and a summary of the user profile. There is also raw data available if necessary in json format. It is possible to save the report simply by clicking "Save" button.
 
+Eloquently written style.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -57,10 +59,11 @@ Twitter Activity Tracker App enables anyone to check on a particular Twitter acc
 Frameworks/libraries/languages used:
 
 - HTML, CSS, JS
-- [React.js](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
 - [Node.js](https://nodejs.org/en/)
 - [CodePen.io](https://codepen.io/DToxVanilla)
-- [Styled Components](https://styled-components.com/docs/basics)
+- [FaunaDB JavaScript Driver](https://www.npmjs.com/package/faunadb)
+- [tailwindcss](https://tailwindcss.com/)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -79,7 +82,7 @@ To run this SPA, install it locally using npm and run mock API on a separate ter
 
 ```
 $ npm install
-$ npm start
+$ npm run dev
 ```
 
 <!-- CONTACT -->

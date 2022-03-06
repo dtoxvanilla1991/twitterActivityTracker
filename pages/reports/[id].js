@@ -7,9 +7,25 @@ export default function ShowReport() {
   const [data, setData] = useState(null);
   const router = useRouter();
   const { id } = router.query;
-  console.log('Router ID', id);
+  console.log('id', id);
+
+  useEffect(() => {
+    if(id) {
+      getCurrentReport();
+    }
+  }, [id]);
+
+  const getCurrentReport = async () => { 
+    const response = await getReportData(id);
+    console.log('success', response);
+    setData(response);
+  };
+
+  if(!data) { 
+    return <div>Loading...</div>
+  }
 
   return (
-    <div>Report {id}</div>
+    <Report data={data}/>
   )
 }

@@ -1,5 +1,8 @@
+// import ReactJson from "react-json-view";
 import dynamic from "next/dynamic";
 import { profileCard, rawDataContainer, reportContainer } from "../styles/Report.styles";
+import { DetailsCard } from "./DetailsCard";
+import twitterLogo from "../../src/Twitter-social.png";
 const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false });
 
 
@@ -8,7 +11,9 @@ export function Report({ data }) {
   console.log('data', data);
   
   if(!data) { 
-    return <div className="mt-4 text-purple-600">🍁 No Report Loadede</div>
+    return <div className="mt-4 text-purple-600">
+      No Report Loaded
+      </div>
   }
   return (
     <>
@@ -26,6 +31,7 @@ export function Report({ data }) {
           <div>{data.userData.description}</div>
           <div>{data.userData.location}</div>
         </div>
+        <DetailsCard data={data}/>
       </div>
     </>
   )

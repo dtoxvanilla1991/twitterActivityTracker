@@ -7,13 +7,47 @@ const dbClient = new faunadb.Client({
 });
 
 export const saveReportData = async payload => {
-  // TODO: Implement this
+  try {
+    const response = await dbClient.query(
+      q.Create(q.Collection('Report'), {
+        data: {
+          ...payload,
+        }
+      })
+    )
+    console.log('success', response);
+    alert(`Report saved successfully ${response.ref.value.id}`);
+  } catch (error) {
+    console.log('error', error);
+    alert('Something went wrong');
+  }
 }
 
 export const getReportData = async id => { 
-  // TODO: Implement this
+  try {
+    const response = await dbClient.query(
+      q.Get(q.Ref(q.Collection('Report'), id))
+    )
+    // return response;
+    return response.data;
+  } catch (error) {
+    console.log('error', error);
+    alert('Something went wrong');
+  }
 }
 
 export const getAllReports = async () => { 
-  // TODO: Implement this
+  try {
+    const response = await dbClient.query(
+      q.Map(
+        q.Paginate(q.Documents(q.Collection('Report'))),
+        q.Lambda(x => q.Get(x))
+      )
+    )
+    // return response;
+    return response;
+  } catch (error) {
+    console.log('error', error);
+    alert('Something went wrong');
+  }
 }
