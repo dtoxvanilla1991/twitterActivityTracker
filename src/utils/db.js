@@ -1,4 +1,4 @@
-import faunadb from 'faunadb'
+import faunadb from 'faunadb';
 const q = faunadb.query;
 
 const dbClient = new faunadb.Client({ 
@@ -9,45 +9,45 @@ const dbClient = new faunadb.Client({
 export const saveReportData = async payload => {
   try {
     const response = await dbClient.query(
-      q.Create(q.Collection('Report'), {
+      q.Create(q.Collection('Reports'), {
         data: {
           ...payload,
         }
       })
-    )
+    );
     console.log('success', response);
     alert(`Report saved successfully ${response.ref.value.id}`);
   } catch (error) {
     console.log('error', error);
     alert('Something went wrong');
   }
-}
+};
 
 export const getReportData = async id => { 
   try {
     const response = await dbClient.query(
-      q.Get(q.Ref(q.Collection('Report'), id))
-    )
+      q.Get(q.Ref(q.Collection('Reports'), id))
+    );
     // return response;
     return response.data;
   } catch (error) {
     console.log('error', error);
     alert('Something went wrong');
   }
-}
+};
 
 export const getAllReports = async () => { 
   try {
     const response = await dbClient.query(
       q.Map(
-        q.Paginate(q.Documents(q.Collection('Report'))),
+        q.Paginate(q.Documents(q.Collection('Reports'))),
         q.Lambda(x => q.Get(x))
       )
-    )
+    );
     // return response;
     return response;
   } catch (error) {
     console.log('error', error);
     alert('Something went wrong');
   }
-}
+};
